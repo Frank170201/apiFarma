@@ -14,7 +14,7 @@ export class ProductsController {
   }
 
   @Get(':id')
-  getProductById(@Param('id',ParseIntPipe) id: number) {
+  getProductById(@Param('id') id: string) {
     console.log({id});
     return this.productsService.finOneById(id);
   }
