@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 import { ProductsService } from './products.service';
 
 @Controller('products')
@@ -14,12 +14,25 @@ export class ProductsController {
   }
 
   @Get(':id')
-  getProductById(@Param('id') id: string) {
-    const newId= parseInt(id);
-    const productById = this.productsService.finOneById(newId);
-    if (!productById) {
-      return { message: 'Product not found' };
-    }
-    return productById;
+  getProductById(@Param('id',ParseIntPipe) id: number) {
+    console.log({id});
+    return this.productsService.finOneById(id);
+  }
+
+  @Post()
+  createProduct(@Body() body: any) {
+    return body;
+  }
+
+  @Patch(':id')
+  updateProduct(
+    @Param('id',ParseIntPipe) id: number,
+    @Body() body: any) {
+    return body;
+  }
+
+  @Delete(':id')
+  deleteProduct(@Param('id',ParseIntPipe) id: number) {
+    return `Product with ID ${id} has been deleted`;
   }
 }
