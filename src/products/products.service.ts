@@ -2,6 +2,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Product } from './interfaces/product.interface';
 import { v4 as uuid } from 'uuid';
+import { CreateProductDto,UpdateProductDto } from './dto';
 @Injectable()
 export class ProductsService {
     private products: Product[] = [
@@ -38,5 +39,41 @@ export class ProductsService {
             throw new NotFoundException(`Product with ID ${id} not found`);
         }
         return product;
+    }
+
+    create(createProductDto: CreateProductDto){
+        const product: Product = {
+            id: uuid(),
+            ...createProductDto
+        }
+
+        this.products.push(product);
+
+        return product;
+    }
+
+    update(id: string, updateProductDto: UpdateProductDto){
+        
+        let productDb= this.finOneById(id);
+        this.products= this.products.map((product) => {
+            if (product.id === id) {
+                productDb= {
+                    ...productDb,
+                    ...updateProductDto,
+                    id,
+                }
+                return productDb;
+            }
+            return product;
+        })
+        
+        return productDb;
+    }
+
+    delete(id: string) {
+        const productDB= this.finOneById(id);
+
+        this.products = this.products.filter((product) => product.id !== id);
+        return 'Product deleted successfully';
     }
 }
