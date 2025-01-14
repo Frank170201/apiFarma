@@ -8,14 +8,14 @@ import { v4 as uuid } from 'uuid';
 export class UsersService {
 
   private users: User[]=[
-    {
-      id: uuid(),
-      name: 'John Doe',
-      email: 'fran170201@gmail.com',
-      password: '123456',
-      status: true,
-      createdAt: new Date()
-    }
+    // {
+    //   id: uuid(),
+    //   name: 'John Doe',
+    //   email: 'fran170201@gmail.com',
+    //   password: '123456',
+    //   status: true,
+    //   createdAt: new Date()
+    // }
   ]
 
   create(createUserDto: CreateUserDto) {
@@ -60,4 +60,9 @@ export class UsersService {
   remove(id: string) {
     this.users = this.users.filter((user)=> user.id !== id);
   }
+
+  fillUsersWithSeedData(user: User[]){
+    this.users = user;
+  }
+
 }
