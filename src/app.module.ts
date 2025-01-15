@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
-import { ProductsModule } from './products/products.module';
+import { UsersModule } from './users/users.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
-  imports: [ProductsModule],
+  imports: [ UsersModule, SeedModule],
   controllers: [],
   providers: [],
   exports: [],
