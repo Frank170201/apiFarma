@@ -7,16 +7,7 @@ import { v4 as uuid } from 'uuid';
 @Injectable()
 export class UsersService {
 
-  private users: User[]=[
-    // {
-    //   id: uuid(),
-    //   name: 'John Doe',
-    //   email: 'fran170201@gmail.com',
-    //   password: '123456',
-    //   status: true,
-    //   createdAt: new Date()
-    // }
-  ]
+  private users: User[]=[]
 
   create(createUserDto: CreateUserDto) {
     const {name, email, password, status} = createUserDto;
