@@ -12,9 +12,9 @@ RUN yarn build
 
 
 # Dar permiso para ejecutar la applicación
-RUN adduser --disabled-password pokeuser
-RUN chown -R pokeuser:pokeuser /var/www/pokedex
-USER pokeuser
+RUN adduser --disabled-password farmauser
+RUN chown -R farmauser:farmauser /var/www/apiFarma
+USER farmauser
 
 # Limpiar el caché
 RUN yarn cache clean --force
