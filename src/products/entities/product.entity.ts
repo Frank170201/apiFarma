@@ -6,12 +6,31 @@ export class Product {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column('text')
+    @Column('varchar')
     name: string;
 
-    @Column('text')
+    @Column('varchar')
     description: string;
 
-    @Column('float')
+    @Column('float',{
+        default: 0
+    })
     unit_price: number;
+
+    @Column('float',{
+        default: 0
+    })
+    unit_measurement: number;
+
+    @Column('boolean',{
+        default: true
+    })
+    status: boolean;
+
+    @Column('varchar')
+    category: string;
+
+    @Column('varchar')
+    brand: string;
+
 }
