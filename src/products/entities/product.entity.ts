@@ -1,3 +1,4 @@
+import { number } from "joi";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -6,31 +7,41 @@ export class Product {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column('varchar')
+    @Column({
+        type: 'varchar',
+    })
     name: string;
 
-    @Column('varchar')
+    @Column({
+        type: 'varchar',
+        nullable: true
+    })
     description: string;
 
-    @Column('float',{
+    @Column({
+        type: 'float',
         default: 0
     })
     unit_price: number;
 
-    @Column('float',{
-        default: 0
+    @Column({
+        type: 'varchar'
     })
-    unit_measurement: number;
+    unit_measurement: string;
 
-    @Column('boolean',{
-        default: true
+    @Column({
+        type: 'boolean',
     })
     status: boolean;
 
-    @Column('varchar')
+    @Column({
+        type: 'varchar',
+    })
     category: string;
 
-    @Column('varchar')
+    @Column({
+        type: 'varchar',
+    })
     brand: string;
 
 }
