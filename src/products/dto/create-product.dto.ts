@@ -25,4 +25,8 @@ export class CreateProductDto {
 
     @IsString()
     brand: string;
+
+    @IsString()
+    @IsOptional()
+    slug:string;
 }
